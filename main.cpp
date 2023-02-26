@@ -3,12 +3,12 @@
 #include "tsp.cpp"
 
 using namespace std;
-
+/*
 void print_roads(const vector<Road>& roads) {
     for (const Road& road : roads) {
         cout << road.firstCity << " " << road.secondCity << " " << road.cost << endl;
     }
-}
+}*/
 
 int main(int argc, char* argv[]) {
     if (argc != 3) {
@@ -19,10 +19,10 @@ int main(int argc, char* argv[]) {
     exec_time = -omp_get_wtime();
     double maxValue = stod(argv[2]); //string to double
 
-    vector<Road> roads = parse_inputs(argv[1]);
-    print_roads(roads);
+    vector<City> cities = parse_inputs(argv[1]);
+    //print_roads(roads);
 
-    tsp(roads, maxValue);
+    tsp(cities, maxValue);
 
     exec_time += omp_get_wtime();
     fprintf(stderr, "%.1fs\n", exec_time);
