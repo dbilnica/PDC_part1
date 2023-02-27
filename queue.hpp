@@ -172,7 +172,7 @@ class PriorityQueue
 			while (not queue_copy.empty())
 			{
 				T elem = queue_copy.pop();
-				print_per_element(elem);
+				print_per_element(static_cast<const std::pair<int, float>>(static_cast<const std::pair<int, float>>(elem)));
 			}
 		}
 };
