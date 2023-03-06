@@ -24,12 +24,7 @@ public:
         currentCity = currentCity;
     }
 
-    // Compare roads based on their lower bound
-    //In case two nodes of the tree have the same lower-bound value, use the index of the city to break
-    //the tie, lower indices should be given higher priority. (it is still possible to have a draw, but very
-    //unlikely, hence you may safely ignore that situation)
-    //tady pouzivat pouze datovy typ double (ne float)
-
+    // Compare nodes based on their lower bound
     bool operator>(const Node& other) const {
         if(lower_bound == other.lower_bound){
             // lower indices have higher priority
@@ -38,55 +33,153 @@ public:
         return lower_bound > other.lower_bound;
     }
 };
+pair<pair<int, double>,pair<int, double>> getLowestCosts(vector<vector<int>>& distances, int city){
+    pair<int, double> lowest1 = {0, numeric_limits<double>::max()};
+    pair<int, double> lowest2 = {0, numeric_limits<double>::max()};
 
-// Calculate the lower-bound for the tour
-double computeLowerBound(vector<vector<int>>& distances, int city) {
-    double lb = 0;
-    for(int i = 0; i < distances.size(); i++){
+    for(int i = 0; i < distances[city].size(); i++){
+        double currentValue = distances[city][i];
 
-        // Initialize the lowest and second-lowest values
-        double lowest1 = numeric_limits<double>::max();
-        double lowest2 = numeric_limits<double>::max();
+        if (currentValue != 0) {
+            if (currentValue < lowest1.second) {
+                // pass values
+                lowest2.second = lowest1.second;
+                // pass city indexes
+                lowest2.first = lowest1.first;
 
-        // Loop through the row and update the lowest and second-lowest values
-        for (int currentValue : distances[city]) {
-            if (currentValue != 0) {
-                if (currentValue < lowest1) {
-                    lowest2 = lowest1;
-                    lowest1 = currentValue;
-                } else if (currentValue < lowest2) {
-                    lowest2 = currentValue;
-                }
+                lowest1.second = currentValue;
+                lowest1.first = i;
+            } else if (currentValue < lowest2.second) {
+                lowest2.second = currentValue;
+                lowest2.first = i;
             }
         }
-        lb = (lowest1+lowest2) / 2;
     }
-    return lb;
+    return {lowest1, lowest2};
+}
+
+
+tuple<double, pair<int,double>,pair<int,double>> computeInitLowerBound(vector<vector<int>>& distances, int city) {
+    double lb = 0.0;
+
+    pair<pair<int, double>,pair<int, double>> result = getLowestCosts(distances, city);
+    pair<int, double> lowest1 = result.first;
+    pair<int, double> lowest2 = result.second;
+    lb = (lowest1.second + lowest2.second) / 2;
+
+    return {lb, lowest1, lowest2};
+}
+
+
+double computeLowerBound(vector<vector<int>>& distances,
+                         vector<pair<pair<int, double>, pair<int,double>>>& lowestPairs,
+                         int city1,
+                         int city2,
+                         double lb) {
+    double cf = 0;
+    double ct = 0;
+    double cost = distances[city1][city2];
+    pair<int, double> lowest1 = {0, 0};
+    pair<int, double> lowest2 = {0, 0};
+
+    ////////////////////
+    // CF
+
+    // Check if lowest1 and lowest2 are computed
+    auto it = find_if(lowestPairs.begin(), lowestPairs.end(),
+                           [city1, city2](const auto& p) {
+                               return p.first.first == city1 || p.second.first == city2;
+                           });
+    // Lowest1 and lowest2 were found
+    if (it != lowestPairs.end()) {
+        // Retrieve the found pair
+        pair<pair<int, double>, pair<int,double>> found_pair = *it;
+        lowest1 = found_pair.first;
+        lowest2 = found_pair.second;
+    }
+    // Lowest1 and lowest2 were not found
+    else{
+        // Compute lowest
+        pair<pair<int, double>,pair<int, double>> result = getLowestCosts(distances, city1);
+        lowest1 = result.first;
+        lowest2 = result.second;
+    }
+
+    // Main condition
+    if(cost >= lowest2.second){
+        cf = lowest2.second;
+    }
+    else{
+        cf = lowest1.second;
+    }
+
+    ////////////////////
+    // CT
+    // Check if lowest1 and lowest2 are computed
+    it = find_if(lowestPairs.begin(), lowestPairs.end(),
+                      [city1, city2](const auto& p) {
+                          return p.first.first == city2 || p.second.first == city1;
+                      });
+    // Lowest1 and lowest2 were found
+    if (it != lowestPairs.end()) {
+        // Retrieve the found pair
+        pair<pair<int, double>, pair<int,double>> found_pair = *it;
+        lowest1 = found_pair.first;
+        lowest2 = found_pair.second;
+    }
+    // Lowest1 and lowest2 were not found
+    else{
+        // Compute lowest
+        pair<pair<int, double>,pair<int, double>> result = getLowestCosts(distances, city2);
+        lowest1 = result.first;
+        lowest2 = result.second;
+    }
+
+    // Main condition
+    if(cost >= lowest2.second){
+        ct = lowest2.second;
+    }
+    else{
+        ct = lowest1.second;
+    }
+
+    return lb + cost - (cf+ct)/2;
 }
 
 int tsp(vector<vector<int>>& distances, double bestTourCost){
-    // Compute initial lower bound for root node
-    double initialLB = computeLowerBound(distances, 0);
+    //Saving lowest cost of travel
+    // vector with tuples of lowest costs containing tuples with index of the city and cost of travel
+    vector<pair<pair<int, double>, pair<int, double>>> lowestPairs(distances.size());
 
     // Queue init
     PriorityQueue<Node> queue;
-
-    // First node
-    Node first({0},0.0,initialLB,1,0);
-    queue.push(first);
+    double rootLB = 0.0;
 
     // Compute lower bound for all children and insert them in queue
-    for(int i = 1; i < distances.size(); i++){
-        double value = computeLowerBound(distances, i);
-        cout << value<< endl;
+    for(int i = 0; i < distances.size(); i++){
+        tuple<double, pair<int,double>,pair<int,double>> result = computeInitLowerBound(distances, i);
+        double value = get<0>(result);
+        pair<int,double> lowest1 = get<1>(result);
+        pair<int,double> lowest2 = get<2>(result);
 
-        // insert nodes
-        //TODO: how to set path for children nodes to contain previously visited cities
-        //TODO: how to access different nodes in queue
-        //
-        Node node({0, i},distances[0][i], value, 2, 1);
+        cout << value << endl;
+        rootLB += value;
+
+        // Saving computed lowest costs
+        lowestPairs.push_back({lowest1, lowest2});
+
+        if(i == 0){
+            continue;
+        }
+        cout << "Node " << i << ": " << distances[0][i] << " | " << value << endl;
+        Node node({0, i},distances[0][i], value, 2, i);
         queue.push(node);
     }
+    cout << rootLB << endl;
+
+    // First node
+    Node first({0},0.0,rootLB,1,0);
+    queue.push(first);
 
     /*
     while(!queue.empty()){
@@ -126,12 +219,13 @@ vector<vector<int>> parse_inputs(const string& filename) {
         }
     }
     // print the resulting array
+    /*
     for (int i = 0; i < num_cities; i++) {
         for (int j = 0; j < num_cities; j++) {
             cout << distances[i][j] << " ";
         }
         cout << endl;
-    }
+    }*/
     inputFile.close();
     return distances;
 }
