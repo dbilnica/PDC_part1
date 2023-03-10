@@ -6,7 +6,7 @@
 using namespace std;
 
 void printResults(const pair<vector<int>,double>& v) {
-    cout << "Best tour: ";
+    cout << "\n\nBest tour: ";
     for (int i : v.first) {
         cout << i << " ";
     }
@@ -23,12 +23,14 @@ int main(int argc, char* argv[]) {
     exec_time = -omp_get_wtime();
     double maxValue = stod(argv[2]); //string to double
 
-    pair<vector<vector<int>>,vector<pair<pair<int, double>,pair<int, double>>>>  inputs = parse_inputs(argv[1]);
+    pair<vector<vector<double>>,vector<pair<pair<int, double>,pair<int, double>>>>  inputs = parse_inputs(argv[1]);
     pair<vector<int>,double> results = tsp(inputs, maxValue);
 
 
     // Print results here
-    printResults(results);
+    if(!results.first.empty()  && results.second != 0){
+        printResults(results);
+    }
 
     exec_time += omp_get_wtime();
     fprintf(stderr, "%.1fs\n", exec_time);
