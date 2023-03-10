@@ -21,11 +21,11 @@ public:
 
 
     Node(vector<int> tour, double cost, double lower_bound, int nodes, int currentCity) :
-        tour(move(tour)),
-        cost(cost),
-        lower_bound(lower_bound),
-        nodes(nodes),
-        currentCity(currentCity) {}
+            tour(move(tour)),
+            cost(cost),
+            lower_bound(lower_bound),
+            nodes(nodes),
+            currentCity(currentCity) {}
 
     // Compare nodes based on their lower bound
     bool operator>(const Node& other) const {
@@ -37,25 +37,21 @@ public:
     }
 };
 
-pair<pair<int, double>,pair<int, double>> getLowestCosts(vector<vector<double>>& distances, int city){
-    pair<int, double> lowest1 = {0, numeric_limits<double>::max()};
-    pair<int, double> lowest2 = {0, numeric_limits<double>::max()};
+pair<double,double> getLowestCosts(vector<vector<double>>& distances, int city){
+    double lowest1 = numeric_limits<double>::max();
+    double lowest2 = numeric_limits<double>::max();
 
     for(int i = 0; i < distances[city].size(); i++){
         double currentValue = distances[city][i];
 
         if (currentValue != 0) {
-            if (currentValue < lowest1.second) {
+            if (currentValue < lowest1) {
                 // pass values
-                lowest2.second = lowest1.second;
-                // pass city indexes
-                lowest2.first = lowest1.first;
+                lowest2 = lowest1;
+                lowest1 = currentValue;
 
-                lowest1.second = currentValue;
-                lowest1.first = i;
-            } else if (currentValue < lowest2.second) {
-                lowest2.second = currentValue;
-                lowest2.first = i;
+            } else if (currentValue < lowest2) {
+                lowest2 = currentValue;
             }
         }
     }
@@ -63,13 +59,13 @@ pair<pair<int, double>,pair<int, double>> getLowestCosts(vector<vector<double>>&
 }
 
 
-double computeInitLowerBound(vector<pair<pair<int, double>,pair<int, double>>>& lowestCosts, int city) {
+double computeInitLowerBound(vector<pair<double, double>>& lowestCosts) {
     double lowest1 = 0;
     double lowest2 = 0;
     double sum = 0;
     for(int i = 0; i < lowestCosts.size(); i++){
-        lowest1 = lowestCosts[i].first.second;
-        lowest2 = lowestCosts[i].second.second;
+        lowest1 = lowestCosts[i].first;
+        lowest2 = lowestCosts[i].second;
         sum += lowest1 + lowest2;
     }
     return sum / 2;
@@ -77,7 +73,7 @@ double computeInitLowerBound(vector<pair<pair<int, double>,pair<int, double>>>& 
 
 
 double computeLowerBound(vector<vector<double>>& distances,
-                         vector<pair<pair<int, double>, pair<int,double>>>& lowestPairs,
+                         vector<pair<double,double>>& lowestPairs,
                          int city1,
                          int city2,
                          double lb) {
@@ -87,15 +83,15 @@ double computeLowerBound(vector<vector<double>>& distances,
 
     ////////////////////
     // CF
-    pair<int, double> lowest1 = lowestPairs[city1].first;
-    pair<int, double> lowest2 = lowestPairs[city1].second;
+    double lowest1 = lowestPairs[city1].first;
+    double lowest2 = lowestPairs[city1].second;
 
     // Main condition
-    if(cost >= lowest2.second){
-        cf = lowest2.second;
+    if(cost >= lowest2){
+        cf = lowest2;
     }
     else{
-        cf = lowest1.second;
+        cf = lowest1;
     }
 
     ////////////////////
@@ -104,18 +100,18 @@ double computeLowerBound(vector<vector<double>>& distances,
     lowest2 = lowestPairs[city2].second;
 
     // Main condition
-    if(cost >= lowest2.second){
-        ct = lowest2.second;
+    if(cost >= lowest2){
+        ct = lowest2;
     }
     else{
-        ct = lowest1.second;
+        ct = lowest1;
     }
     return lb + cost - (cf+ct)/2;
 }
 
-pair<vector<int>,double> tsp(pair<vector<vector<double>>,vector<pair<pair<int, double>,pair<int, double>>>>& inputs, double maxTourCost){
+pair<vector<int>,double> tsp(pair<vector<vector<double>>,vector<pair<double,double>>>& inputs, double maxTourCost){
     vector<vector<double>> distances = get<0>(inputs);
-    vector<pair<pair<int, double>,pair<int, double>>> lowestCosts = get<1>(inputs);
+    vector<pair<double,double>> lowestCosts = get<1>(inputs);
     vector<int> bestTour;
     double bestTourCost = maxTourCost;
 
@@ -123,7 +119,7 @@ pair<vector<int>,double> tsp(pair<vector<vector<double>>,vector<pair<pair<int, d
     PriorityQueue<Node> queue;
 
     // Initial lower bound
-    double rootLB = computeInitLowerBound(lowestCosts, 0);
+    double rootLB = computeInitLowerBound(lowestCosts);
 
     // Root node
     Node root({0},0,rootLB,1,0);
@@ -159,12 +155,6 @@ pair<vector<int>,double> tsp(pair<vector<vector<double>>,vector<pair<pair<int, d
         }
         else{
             for(int v = 0; v < distances[currentNode.currentCity].size(); v++){
-                // Child nodes already created
-                /*
-                if(currentNode.currentCity == 0){
-                    continue;
-                }*/
-                //cout << currentNode.cost << endl;
                 // Check if city was visited
                 if(find(currentNode.tour.begin(), currentNode.tour.end(), v) == currentNode.tour.end())
                 {
@@ -196,12 +186,12 @@ pair<vector<int>,double> tsp(pair<vector<vector<double>>,vector<pair<pair<int, d
     return {bestTour,bestTourCost};
 }
 
-pair<vector<vector<double>>,vector<pair<pair<int, double>,pair<int, double>>>>  parse_inputs(const string& filename) {
+pair<vector<vector<double>>,vector<pair<double,double>>>  parse_inputs(const string& filename) {
     ifstream inputFile(filename);
     int num_cities, roads;
     inputFile >> num_cities >> roads;
     vector<vector<double>> distances(num_cities, vector<double>(num_cities, INFINITY));
-    vector<pair<pair<int, double>,pair<int, double>>> lowestCosts(num_cities);
+    vector<pair<double,double>> lowestCosts(num_cities);
 
     // fill the array with values from the input file
     int row, col;
@@ -214,7 +204,7 @@ pair<vector<vector<double>>,vector<pair<pair<int, double>,pair<int, double>>>>  
         for (int j = i+1; j < num_cities; j++) {
             distances[j][i] = distances[i][j];
         }
-        pair<pair<int, double>,pair<int, double>> result = getLowestCosts(distances, i);
+        pair<double,double> result = getLowestCosts(distances, i);
         lowestCosts[i] = result;
     }
 

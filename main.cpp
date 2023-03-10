@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
     exec_time = -omp_get_wtime();
     double maxValue = stod(argv[2]); //string to double
 
-    pair<vector<vector<double>>,vector<pair<pair<int, double>,pair<int, double>>>>  inputs = parse_inputs(argv[1]);
+    pair<vector<vector<double>>,vector<pair<double,double>>>  inputs = parse_inputs(argv[1]);
     pair<vector<int>,double> results = tsp(inputs, maxValue);
 
 
@@ -34,6 +34,6 @@ int main(int argc, char* argv[]) {
 
     exec_time += omp_get_wtime();
     fprintf(stderr, "%.1fs\n", exec_time);
-    
+
     return 0;
 }
