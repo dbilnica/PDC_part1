@@ -1,8 +1,6 @@
-#include <string>
 #include "queue.hpp"
 #include <iostream>
 #include <fstream>
-#include <utility>
 #include <vector>
 #include <cmath>
 #include <algorithm>
@@ -18,7 +16,6 @@ public:
     int currentCity = 0;
 
     Node() : cost(0), lower_bound(0), nodes(0), currentCity(0) {}
-
 
     Node(vector<int> tour, double cost, double lower_bound, int nodes, int currentCity) :
             tour(move(tour)),
@@ -60,8 +57,7 @@ pair<double,double> getLowestCosts(vector<vector<double>>& distances, int city){
 
 
 double computeInitLowerBound(vector<pair<double, double>>& lowestCosts) {
-    double lowest1 = 0;
-    double lowest2 = 0;
+    double lowest1 = 0, lowest2 = 0;
     double sum = 0;
     for(int i = 0; i < lowestCosts.size(); i++){
         lowest1 = lowestCosts[i].first;
@@ -77,16 +73,13 @@ double computeLowerBound(vector<vector<double>>& distances,
                          int city1,
                          int city2,
                          double lb) {
-    double cf = 0;
-    double ct = 0;
+    double cf = 0, ct = 0;
     double cost = distances[city1][city2];
 
-    ////////////////////
     // CF
     double lowest1 = lowestPairs[city1].first;
     double lowest2 = lowestPairs[city1].second;
 
-    // Main condition
     if(cost >= lowest2){
         cf = lowest2;
     }
@@ -94,12 +87,10 @@ double computeLowerBound(vector<vector<double>>& distances,
         cf = lowest1;
     }
 
-    ////////////////////
     // CT
     lowest1 = lowestPairs[city2].first;
     lowest2 = lowestPairs[city2].second;
 
-    // Main condition
     if(cost >= lowest2){
         ct = lowest2;
     }
@@ -125,7 +116,6 @@ pair<vector<int>,double> tsp(pair<vector<vector<double>>,vector<pair<double,doub
     Node root({0},0,rootLB,1,0);
     queue.push(root);
 
-    // Algorithm
     while(!queue.empty()){
         Node currentNode = queue.pop();
 
@@ -136,7 +126,6 @@ pair<vector<int>,double> tsp(pair<vector<vector<double>>,vector<pair<double,doub
                 return {{},0};
             }
             else{
-                cout << "FINISHED" << endl;
                 bestTour.push_back(0);
                 return {bestTour, bestTourCost};
             }
@@ -145,11 +134,6 @@ pair<vector<int>,double> tsp(pair<vector<vector<double>>,vector<pair<double,doub
         if(currentNode.nodes == distances[0].size()){
             if(currentNode.cost + distances[currentNode.currentCity][0] < bestTourCost){
                 bestTour = currentNode.tour;
-
-                cout << "BestTour: ";
-                for(int i = 0; i < bestTour.size(); i++)
-                    cout << bestTour[i] << ' ';
-                cout << " BestTour Cost: " << bestTourCost << endl;
                 bestTourCost = currentNode.cost + distances[currentNode.currentCity][0];
             }
         }
@@ -158,21 +142,17 @@ pair<vector<int>,double> tsp(pair<vector<vector<double>>,vector<pair<double,doub
                 // Check if city was visited
                 if(find(currentNode.tour.begin(), currentNode.tour.end(), v) == currentNode.tour.end())
                 {
-                    // Skip same cities
                     if(v == currentNode.currentCity || distances[currentNode.currentCity][v] == INFINITY){
                         continue;
                     }
                     double newBound = computeLowerBound(distances,lowestCosts, currentNode.currentCity,
                                                         v, currentNode.lower_bound);
 
-                    // Is higher than best so far
                     if(newBound > bestTourCost){
-                        //cout << "Skipped" << endl;
                         continue;
                     }
                     vector<int> newTour = currentNode.tour;
                     newTour.push_back(v);
-
                     double newCost = currentNode.cost + distances[currentNode.currentCity][v];
 
                     Node newNode = Node(newTour, newCost, newBound, currentNode.nodes + 1, v);
@@ -181,21 +161,18 @@ pair<vector<int>,double> tsp(pair<vector<vector<double>>,vector<pair<double,doub
             }
         }
     }
-
     bestTour.push_back(0);
     return {bestTour,bestTourCost};
 }
 
 pair<vector<vector<double>>,vector<pair<double,double>>>  parse_inputs(const string& filename) {
     ifstream inputFile(filename);
-    int num_cities, roads;
-    inputFile >> num_cities >> roads;
+    int num_cities, paths, row, col;
+    double val;
+    inputFile >> num_cities >> paths;
     vector<vector<double>> distances(num_cities, vector<double>(num_cities, INFINITY));
     vector<pair<double,double>> lowestCosts(num_cities);
 
-    // fill the array with values from the input file
-    int row, col;
-    double val;
     while (inputFile >> row >> col >> val) {
         distances[row][col] = val;
     }
@@ -206,15 +183,6 @@ pair<vector<vector<double>>,vector<pair<double,double>>>  parse_inputs(const str
         }
         pair<double,double> result = getLowestCosts(distances, i);
         lowestCosts[i] = result;
-    }
-
-    // print the resulting array
-
-    for (int i = 0; i < num_cities; i++) {
-        for (int j = 0; j < num_cities; j++) {
-            cout << distances[i][j] << " ";
-        }
-        cout << endl;
     }
     inputFile.close();
     return {distances, lowestCosts};

@@ -4,8 +4,8 @@ LIBS = -lm
 
 all: tsp
 
-tsp: tsp.cpp
-	$(CC) $(CFLAGS) -o tsp tsp.cpp $(LIBS)
+tsp: main.cpp
+	$(CC) $(CFLAGS) -o tsp main.cpp $(LIBS)
 
 clean:
 	rm -f tsp
