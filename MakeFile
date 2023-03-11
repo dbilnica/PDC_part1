@@ -1,11 +1,2 @@
-CC = g++
-CFLAGS = -Wall -g -fopenmp
-LIBS = -lm
-
-all: tsp
-
-tsp: tsp.cpp
-	$(CC) $(CFLAGS) -o tsp tsp.cpp $(LIBS)
-
-clean:
-	rm -f tsp
+all: main.cpp
+	gcc main.cpp -o -O3 -fopenmp ./main.cpp
