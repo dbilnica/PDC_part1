@@ -1,2 +1,0 @@
-all: main.cpp
-	gcc main.cpp -o -O3 -fopenmp ./main.cpp
