@@ -106,7 +106,7 @@ double computeLowerBound(vector<vector<double>>& distances,
 pair<vector<int>,double> tsp(pair<vector<vector<double>>,vector<pair<double,double>>>& inputs, double maxTourCost){
     vector<vector<double>> distances = get<0>(inputs);
     vector<pair<double,double>> lowestCosts = get<1>(inputs);
-    vector<int> bestTour;
+    vector<int> bestTour = {};
     double bestTourCost = maxTourCost;
     int nthreads = omp_get_max_threads();
 
@@ -140,10 +140,12 @@ pair<vector<int>,double> tsp(pair<vector<vector<double>>,vector<pair<double,doub
     vector<int> newTour;
     double newBound;
     int threadId;
+    double threadCost;
 
-#pragma omp parallel shared(results, queues, bestTourCost) private(newCost, newTour, newBound, currentNode, threadId)
+#pragma omp parallel shared(results, queues, bestTourCost, bestTour) private(newCost, newTour, newBound, currentNode, threadId, threadCost)
     {
         threadId = omp_get_thread_num();
+        threadCost = maxTourCost;
         while(true){
             if (queues[threadId].empty()) {
                 bool workStolen = false;
@@ -161,26 +163,27 @@ pair<vector<int>,double> tsp(pair<vector<vector<double>>,vector<pair<double,doub
             } else {
                 currentNode = queues[threadId].pop();
             }
-            if(currentNode.lower_bound >= bestTourCost){
+            if(currentNode.lower_bound >= threadCost){
                 // tour is not complete -> no solution
                 if(threadTour.size() < distances[0].size()){
                     results.push_back({{},0});
                     break;
                 }
                 else{
-                    results.push_back({threadTour, bestTourCost});
+                    results.push_back({threadTour, threadCost});
                     break;
                 }
             }
 
             if(currentNode.nodes == distances[0].size()){
-                if(currentNode.cost + distances[currentNode.currentCity][0] < bestTourCost){
+                if(currentNode.cost + distances[currentNode.currentCity][0] < threadCost){
                     threadTour = currentNode.tour;
 #pragma omp atomic write
-                    bestTourCost = currentNode.cost + distances[currentNode.currentCity][0];
+                    threadCost = currentNode.cost + distances[currentNode.currentCity][0];
                 }
             }
             else{
+#pragma omp parallel for
                 for(int v = 0; v < distances[currentNode.currentCity].size(); v++){
                     // Check if city was visited
                     if(find(currentNode.tour.begin(), currentNode.tour.end(), v) == currentNode.tour.end())
@@ -192,31 +195,38 @@ pair<vector<int>,double> tsp(pair<vector<vector<double>>,vector<pair<double,doub
                         newBound = computeLowerBound(distances,lowestCosts, currentNode.currentCity,
                                                      v, currentNode.lower_bound);
 
-                        // Is lower than best so far
-                        if(newBound < bestTourCost){
-                            newTour = currentNode.tour;
-                            newTour.push_back(v);
-#pragma omp atomic write
-                            newCost = currentNode.cost + distances[currentNode.currentCity][v];
-
-                            Node newNode = Node(newTour, newCost, newBound, currentNode.nodes + 1, v);
-#pragma omp critical
-                            queues[threadId].push(newNode);
+                        // Is higher than best so far
+                        if(newBound > threadCost){
+                            continue;
                         }
+                        newTour = currentNode.tour;
+                        newTour.push_back(v);
+#pragma omp atomic write
+                        newCost = currentNode.cost + distances[currentNode.currentCity][v];
+
+                        Node newNode = Node(newTour, newCost, newBound, currentNode.nodes + 1, v);
+#pragma omp critical
+                        {
+                            queues[threadId].push(newNode);
+                        };
                     }
                 }
             }
         }
-
         // Compare results
 #pragma omp master
-        for(int i = 0; i < results.size(); i++)
 #pragma omp critical
         {
-            if(results[i].second < bestTourCost){
-                bestTourCost = results[i].second;
-                bestTour = results[i].first;
+            int best = 0;
+            double cost = results[0].second;
+            for (int i = 0; i < results.size(); i++) {
+                if (results[i].second < cost) {
+                    best = i;
+                    cost = results[i].second;
+                }
             }
+            bestTour = results[best].first;
+            bestTourCost = cost;
         }
     }
 

@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -O3 -g -fopenmp
+CFLAGS = -std=c++11 -O3 -g -fopenmp -include /usr/include/c++/11*/limits
 LIBS = -lm
 
 all: tsp
