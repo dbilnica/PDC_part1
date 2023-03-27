@@ -1,7 +1,7 @@
 #include <iostream>
 #include <omp.h>
 #include <vector>
-#include "tsp.cpp"
+#include "tsp.h"
 
 using namespace std;
 

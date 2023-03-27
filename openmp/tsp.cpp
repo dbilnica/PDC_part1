@@ -1,40 +1,10 @@
-#include "queue.hpp"
 #include <iostream>
-#include <fstream>
 #include <vector>
 #include <cmath>
 #include <algorithm>
 #include <omp.h>
-
+#include "tsp.h"
 using namespace std;
-
-class Node {
-public:
-    vector<int> tour = {};
-    double cost = 0.0;
-    double lower_bound = 0.0;
-    int nodes = 0;
-    int currentCity = 0;
-
-    Node() : cost(0), lower_bound(0), nodes(0), currentCity(0) {}
-
-
-    Node(vector<int> tour, double cost, double lower_bound, int nodes, int currentCity) :
-            tour(move(tour)),
-            cost(cost),
-            lower_bound(lower_bound),
-            nodes(nodes),
-            currentCity(currentCity) {}
-
-    // Compare nodes based on their lower bound
-    bool operator>(const Node& other) const {
-        if(lower_bound == other.lower_bound){
-            // lower indices have higher priority
-            return currentCity < other.currentCity;
-        }
-        return lower_bound > other.lower_bound;
-    }
-};
 
 pair<double,double> getLowestCosts(vector<vector<double>>& distances, int city){
     double lowest1 = numeric_limits<double>::max();

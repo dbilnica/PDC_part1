@@ -1,20 +1,16 @@
-CC = gcc
-CFLAGS = -std=c++11 -O3 -g -fopenmp -include /usr/include/c++/11*/limits
-LIBS = -lm
+CXX=gcc
+CXXFLAGS=-O3 -g -fopenmp -std=c++11 -lm -lstdc++
 
 all: tsp
 
-tsp: main.o tsp.o queue.o
-	$(CC) -o $@ main.o tsp.o queue.o $(CFLAGS) $(LIBS)
+tsp: main.o tsp.o
+	$(CXX) $(CXXFLAGS) -o tsp main.o tsp.o -lstdc++
 
 main.o: main.cpp
-	$(CC) -c main.cpp $(CFLAGS)
+	$(CXX) $(CXXFLAGS) -c main.cpp
 
-tsp.o: tsp.cpp
-	$(CC) -c tsp.cpp $(CFLAGS)
-
-queue.o: queue.hpp
-	$(CC) -c queue.hpp $(CFLAGS)
+tsp.o: tsp.cpp tsp.h
+	$(CXX) $(CXXFLAGS) -c tsp.cpp
 
 clean:
-	rm -f tsp main.o tsp.o queue.o
+	rm -f tsp main.o tsp.o
