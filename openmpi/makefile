@@ -1,5 +1,5 @@
-CXX=mpirun
-CXXFLAGS=-n 4
+CXX=mpicc
+CXXFLAGS=-g -o
 
 all: tsp
 
