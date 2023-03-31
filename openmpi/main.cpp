@@ -2,6 +2,7 @@
 #include <vector>
 #include "tsp.h"
 #include <mpi.h>
+#include <omp.h>
 
 using namespace std;
 

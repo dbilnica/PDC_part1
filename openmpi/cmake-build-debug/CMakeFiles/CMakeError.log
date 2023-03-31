@@ -1,0 +1,238 @@
+The MPI test test_mpi for C in mode normal failed to compile with the following output:
+Change Dir: C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f Makefile cmTC_511c0/fast && C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe  -f CMakeFiles\cmTC_511c0.dir\build.make CMakeFiles/cmTC_511c0.dir/build
+mingw32-make[1]: Entering directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_511c0.dir/test_mpi.c.obj
+C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe   -fdiagnostics-color=always -o CMakeFiles\cmTC_511c0.dir\test_mpi.c.obj -c "C:\Program Files\JetBrains\CLion 2022.3.2\bin\cmake\win\x64\share\cmake-3.24\Modules\FindMPI\test_mpi.c"
+[01m[KC:\Program Files\JetBrains\CLion 2022.3.2\bin\cmake\win\x64\share\cmake-3.24\Modules\FindMPI\test_mpi.c:1:10:[m[K [01;31m[Kfatal error: [m[Kmpi.h: No such file or directory
+    1 | #include [01;31m[K<mpi.h>[m[K
+      |          [01;31m[K^~~~~~~[m[K
+compilation terminated.
+mingw32-make[1]: *** [CMakeFiles\cmTC_511c0.dir\build.make:77: CMakeFiles/cmTC_511c0.dir/test_mpi.c.obj] Error 1
+mingw32-make[1]: Leaving directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+mingw32-make: *** [Makefile:126: cmTC_511c0/fast] Error 2
+
+
+
+The MPI test test_mpi for CXX in mode normal failed to compile with the following output:
+Change Dir: C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f Makefile cmTC_c067d/fast && C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe  -f CMakeFiles\cmTC_c067d.dir\build.make CMakeFiles/cmTC_c067d.dir/build
+mingw32-make[1]: Entering directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_c067d.dir/test_mpi.cpp.obj
+C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE   -fdiagnostics-color=always -o CMakeFiles\cmTC_c067d.dir\test_mpi.cpp.obj -c C:\Users\jansa\Desktop\traveling_salesperson\openmpi\cmake-build-debug\CMakeFiles\FindMPI\test_mpi.cpp
+[01m[KC:\Users\jansa\Desktop\traveling_salesperson\openmpi\cmake-build-debug\CMakeFiles\FindMPI\test_mpi.cpp:1:10:[m[K [01;31m[Kfatal error: [m[Kmpi.h: No such file or directory
+    1 | #include [01;31m[K<mpi.h>[m[K
+      |          [01;31m[K^~~~~~~[m[K
+compilation terminated.
+mingw32-make[1]: *** [CMakeFiles\cmTC_c067d.dir\build.make:77: CMakeFiles/cmTC_c067d.dir/test_mpi.cpp.obj] Error 1
+mingw32-make[1]: Leaving directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+mingw32-make: *** [Makefile:126: cmTC_c067d/fast] Error 2
+
+
+
+The MPI test test_mpi for C in mode normal failed to compile with the following output:
+Change Dir: C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f Makefile cmTC_ee8d4/fast && C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe  -f CMakeFiles\cmTC_ee8d4.dir\build.make CMakeFiles/cmTC_ee8d4.dir/build
+mingw32-make[1]: Entering directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ee8d4.dir/test_mpi.c.obj
+C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe   -fdiagnostics-color=always -o CMakeFiles\cmTC_ee8d4.dir\test_mpi.c.obj -c "C:\Program Files\JetBrains\CLion 2022.3.2\bin\cmake\win\x64\share\cmake-3.24\Modules\FindMPI\test_mpi.c"
+[01m[KC:\Program Files\JetBrains\CLion 2022.3.2\bin\cmake\win\x64\share\cmake-3.24\Modules\FindMPI\test_mpi.c:1:10:[m[K [01;31m[Kfatal error: [m[Kmpi.h: No such file or directory
+    1 | #include [01;31m[K<mpi.h>[m[K
+      |          [01;31m[K^~~~~~~[m[K
+compilation terminated.
+mingw32-make[1]: *** [CMakeFiles\cmTC_ee8d4.dir\build.make:77: CMakeFiles/cmTC_ee8d4.dir/test_mpi.c.obj] Error 1
+mingw32-make[1]: Leaving directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+mingw32-make: *** [Makefile:126: cmTC_ee8d4/fast] Error 2
+
+
+
+The MPI test test_mpi for CXX in mode normal failed to compile with the following output:
+Change Dir: C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f Makefile cmTC_9480b/fast && C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe  -f CMakeFiles\cmTC_9480b.dir\build.make CMakeFiles/cmTC_9480b.dir/build
+mingw32-make[1]: Entering directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_9480b.dir/test_mpi.cpp.obj
+C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE   -fdiagnostics-color=always -o CMakeFiles\cmTC_9480b.dir\test_mpi.cpp.obj -c C:\Users\jansa\Desktop\traveling_salesperson\openmpi\cmake-build-debug\CMakeFiles\FindMPI\test_mpi.cpp
+[01m[KC:\Users\jansa\Desktop\traveling_salesperson\openmpi\cmake-build-debug\CMakeFiles\FindMPI\test_mpi.cpp:1:10:[m[K [01;31m[Kfatal error: [m[Kmpi.h: No such file or directory
+    1 | #include [01;31m[K<mpi.h>[m[K
+      |          [01;31m[K^~~~~~~[m[K
+compilation terminated.
+mingw32-make[1]: *** [CMakeFiles\cmTC_9480b.dir\build.make:77: CMakeFiles/cmTC_9480b.dir/test_mpi.cpp.obj] Error 1
+mingw32-make[1]: Leaving directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+mingw32-make: *** [Makefile:126: cmTC_9480b/fast] Error 2
+
+
+
+The MPI test test_mpi for C in mode normal failed to compile with the following output:
+Change Dir: C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f Makefile cmTC_59472/fast && C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe  -f CMakeFiles\cmTC_59472.dir\build.make CMakeFiles/cmTC_59472.dir/build
+mingw32-make[1]: Entering directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_59472.dir/test_mpi.c.obj
+C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe   -fdiagnostics-color=always -o CMakeFiles\cmTC_59472.dir\test_mpi.c.obj -c "C:\Program Files\JetBrains\CLion 2022.3.2\bin\cmake\win\x64\share\cmake-3.24\Modules\FindMPI\test_mpi.c"
+[01m[KC:\Program Files\JetBrains\CLion 2022.3.2\bin\cmake\win\x64\share\cmake-3.24\Modules\FindMPI\test_mpi.c:1:10:[m[K [01;31m[Kfatal error: [m[Kmpi.h: No such file or directory
+    1 | #include [01;31m[K<mpi.h>[m[K
+      |          [01;31m[K^~~~~~~[m[K
+compilation terminated.
+mingw32-make[1]: *** [CMakeFiles\cmTC_59472.dir\build.make:77: CMakeFiles/cmTC_59472.dir/test_mpi.c.obj] Error 1
+mingw32-make[1]: Leaving directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+mingw32-make: *** [Makefile:126: cmTC_59472/fast] Error 2
+
+
+
+The MPI test test_mpi for CXX in mode normal failed to compile with the following output:
+Change Dir: C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f Makefile cmTC_f486e/fast && C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe  -f CMakeFiles\cmTC_f486e.dir\build.make CMakeFiles/cmTC_f486e.dir/build
+mingw32-make[1]: Entering directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_f486e.dir/test_mpi.cpp.obj
+C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE   -fdiagnostics-color=always -o CMakeFiles\cmTC_f486e.dir\test_mpi.cpp.obj -c C:\Users\jansa\Desktop\traveling_salesperson\openmpi\cmake-build-debug\CMakeFiles\FindMPI\test_mpi.cpp
+[01m[KC:\Users\jansa\Desktop\traveling_salesperson\openmpi\cmake-build-debug\CMakeFiles\FindMPI\test_mpi.cpp:1:10:[m[K [01;31m[Kfatal error: [m[Kmpi.h: No such file or directory
+    1 | #include [01;31m[K<mpi.h>[m[K
+      |          [01;31m[K^~~~~~~[m[K
+compilation terminated.
+mingw32-make[1]: *** [CMakeFiles\cmTC_f486e.dir\build.make:77: CMakeFiles/cmTC_f486e.dir/test_mpi.cpp.obj] Error 1
+mingw32-make[1]: Leaving directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+mingw32-make: *** [Makefile:126: cmTC_f486e/fast] Error 2
+
+
+
+The MPI test test_mpi for C in mode normal failed to compile with the following output:
+Change Dir: C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f Makefile cmTC_65c17/fast && C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe  -f CMakeFiles\cmTC_65c17.dir\build.make CMakeFiles/cmTC_65c17.dir/build
+mingw32-make[1]: Entering directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_65c17.dir/test_mpi.c.obj
+C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe   -fdiagnostics-color=always -o CMakeFiles\cmTC_65c17.dir\test_mpi.c.obj -c "C:\Program Files\JetBrains\CLion 2022.3.2\bin\cmake\win\x64\share\cmake-3.24\Modules\FindMPI\test_mpi.c"
+[01m[KC:\Program Files\JetBrains\CLion 2022.3.2\bin\cmake\win\x64\share\cmake-3.24\Modules\FindMPI\test_mpi.c:1:10:[m[K [01;31m[Kfatal error: [m[Kmpi.h: No such file or directory
+    1 | #include [01;31m[K<mpi.h>[m[K
+      |          [01;31m[K^~~~~~~[m[K
+compilation terminated.
+mingw32-make[1]: *** [CMakeFiles\cmTC_65c17.dir\build.make:77: CMakeFiles/cmTC_65c17.dir/test_mpi.c.obj] Error 1
+mingw32-make[1]: Leaving directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+mingw32-make: *** [Makefile:126: cmTC_65c17/fast] Error 2
+
+
+
+The MPI test test_mpi for CXX in mode normal failed to compile with the following output:
+Change Dir: C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f Makefile cmTC_477a0/fast && C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe  -f CMakeFiles\cmTC_477a0.dir\build.make CMakeFiles/cmTC_477a0.dir/build
+mingw32-make[1]: Entering directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_477a0.dir/test_mpi.cpp.obj
+C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE   -fdiagnostics-color=always -o CMakeFiles\cmTC_477a0.dir\test_mpi.cpp.obj -c C:\Users\jansa\Desktop\traveling_salesperson\openmpi\cmake-build-debug\CMakeFiles\FindMPI\test_mpi.cpp
+[01m[KC:\Users\jansa\Desktop\traveling_salesperson\openmpi\cmake-build-debug\CMakeFiles\FindMPI\test_mpi.cpp:1:10:[m[K [01;31m[Kfatal error: [m[Kmpi.h: No such file or directory
+    1 | #include [01;31m[K<mpi.h>[m[K
+      |          [01;31m[K^~~~~~~[m[K
+compilation terminated.
+mingw32-make[1]: *** [CMakeFiles\cmTC_477a0.dir\build.make:77: CMakeFiles/cmTC_477a0.dir/test_mpi.cpp.obj] Error 1
+mingw32-make[1]: Leaving directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+mingw32-make: *** [Makefile:126: cmTC_477a0/fast] Error 2
+
+
+
+The MPI test test_mpi for C in mode normal failed to compile with the following output:
+Change Dir: C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f Makefile cmTC_d9f96/fast && C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe  -f CMakeFiles\cmTC_d9f96.dir\build.make CMakeFiles/cmTC_d9f96.dir/build
+mingw32-make[1]: Entering directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d9f96.dir/test_mpi.c.obj
+C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe   -fdiagnostics-color=always -o CMakeFiles\cmTC_d9f96.dir\test_mpi.c.obj -c "C:\Program Files\JetBrains\CLion 2022.3.2\bin\cmake\win\x64\share\cmake-3.24\Modules\FindMPI\test_mpi.c"
+[01m[KC:\Program Files\JetBrains\CLion 2022.3.2\bin\cmake\win\x64\share\cmake-3.24\Modules\FindMPI\test_mpi.c:1:10:[m[K [01;31m[Kfatal error: [m[Kmpi.h: No such file or directory
+    1 | #include [01;31m[K<mpi.h>[m[K
+      |          [01;31m[K^~~~~~~[m[K
+compilation terminated.
+mingw32-make[1]: *** [CMakeFiles\cmTC_d9f96.dir\build.make:77: CMakeFiles/cmTC_d9f96.dir/test_mpi.c.obj] Error 1
+mingw32-make[1]: Leaving directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+mingw32-make: *** [Makefile:126: cmTC_d9f96/fast] Error 2
+
+
+
+The MPI test test_mpi for CXX in mode normal failed to compile with the following output:
+Change Dir: C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f Makefile cmTC_b4edb/fast && C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe  -f CMakeFiles\cmTC_b4edb.dir\build.make CMakeFiles/cmTC_b4edb.dir/build
+mingw32-make[1]: Entering directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_b4edb.dir/test_mpi.cpp.obj
+C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE   -fdiagnostics-color=always -o CMakeFiles\cmTC_b4edb.dir\test_mpi.cpp.obj -c C:\Users\jansa\Desktop\traveling_salesperson\openmpi\cmake-build-debug\CMakeFiles\FindMPI\test_mpi.cpp
+[01m[KC:\Users\jansa\Desktop\traveling_salesperson\openmpi\cmake-build-debug\CMakeFiles\FindMPI\test_mpi.cpp:1:10:[m[K [01;31m[Kfatal error: [m[Kmpi.h: No such file or directory
+    1 | #include [01;31m[K<mpi.h>[m[K
+      |          [01;31m[K^~~~~~~[m[K
+compilation terminated.
+mingw32-make[1]: *** [CMakeFiles\cmTC_b4edb.dir\build.make:77: CMakeFiles/cmTC_b4edb.dir/test_mpi.cpp.obj] Error 1
+mingw32-make[1]: Leaving directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+mingw32-make: *** [Makefile:126: cmTC_b4edb/fast] Error 2
+
+
+
+The MPI test test_mpi for C in mode normal failed to compile with the following output:
+Change Dir: C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f Makefile cmTC_2e581/fast && C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe  -f CMakeFiles\cmTC_2e581.dir\build.make CMakeFiles/cmTC_2e581.dir/build
+mingw32-make[1]: Entering directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_2e581.dir/test_mpi.c.obj
+C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe   -fdiagnostics-color=always -o CMakeFiles\cmTC_2e581.dir\test_mpi.c.obj -c "C:\Program Files\JetBrains\CLion 2022.3.2\bin\cmake\win\x64\share\cmake-3.24\Modules\FindMPI\test_mpi.c"
+[01m[KC:\Program Files\JetBrains\CLion 2022.3.2\bin\cmake\win\x64\share\cmake-3.24\Modules\FindMPI\test_mpi.c:1:10:[m[K [01;31m[Kfatal error: [m[Kmpi.h: No such file or directory
+    1 | #include [01;31m[K<mpi.h>[m[K
+      |          [01;31m[K^~~~~~~[m[K
+compilation terminated.
+mingw32-make[1]: *** [CMakeFiles\cmTC_2e581.dir\build.make:77: CMakeFiles/cmTC_2e581.dir/test_mpi.c.obj] Error 1
+mingw32-make[1]: Leaving directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+mingw32-make: *** [Makefile:126: cmTC_2e581/fast] Error 2
+
+
+
+The MPI test test_mpi for CXX in mode normal failed to compile with the following output:
+Change Dir: C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f Makefile cmTC_d847a/fast && C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe  -f CMakeFiles\cmTC_d847a.dir\build.make CMakeFiles/cmTC_d847a.dir/build
+mingw32-make[1]: Entering directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_d847a.dir/test_mpi.cpp.obj
+C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE   -fdiagnostics-color=always -o CMakeFiles\cmTC_d847a.dir\test_mpi.cpp.obj -c C:\Users\jansa\Desktop\traveling_salesperson\openmpi\cmake-build-debug\CMakeFiles\FindMPI\test_mpi.cpp
+[01m[KC:\Users\jansa\Desktop\traveling_salesperson\openmpi\cmake-build-debug\CMakeFiles\FindMPI\test_mpi.cpp:1:10:[m[K [01;31m[Kfatal error: [m[Kmpi.h: No such file or directory
+    1 | #include [01;31m[K<mpi.h>[m[K
+      |          [01;31m[K^~~~~~~[m[K
+compilation terminated.
+mingw32-make[1]: *** [CMakeFiles\cmTC_d847a.dir\build.make:77: CMakeFiles/cmTC_d847a.dir/test_mpi.cpp.obj] Error 1
+mingw32-make[1]: Leaving directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+mingw32-make: *** [Makefile:126: cmTC_d847a/fast] Error 2
+
+
+
+The MPI test test_mpi for C in mode normal failed to compile with the following output:
+Change Dir: C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f Makefile cmTC_ded53/fast && C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe  -f CMakeFiles\cmTC_ded53.dir\build.make CMakeFiles/cmTC_ded53.dir/build
+mingw32-make[1]: Entering directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ded53.dir/test_mpi.c.obj
+C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\gcc.exe   -fdiagnostics-color=always -o CMakeFiles\cmTC_ded53.dir\test_mpi.c.obj -c "C:\Program Files\JetBrains\CLion 2022.3.2\bin\cmake\win\x64\share\cmake-3.24\Modules\FindMPI\test_mpi.c"
+[01m[KC:\Program Files\JetBrains\CLion 2022.3.2\bin\cmake\win\x64\share\cmake-3.24\Modules\FindMPI\test_mpi.c:1:10:[m[K [01;31m[Kfatal error: [m[Kmpi.h: No such file or directory
+    1 | #include [01;31m[K<mpi.h>[m[K
+      |          [01;31m[K^~~~~~~[m[K
+compilation terminated.
+mingw32-make[1]: *** [CMakeFiles\cmTC_ded53.dir\build.make:77: CMakeFiles/cmTC_ded53.dir/test_mpi.c.obj] Error 1
+mingw32-make[1]: Leaving directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+mingw32-make: *** [Makefile:126: cmTC_ded53/fast] Error 2
+
+
+
+The MPI test test_mpi for CXX in mode normal failed to compile with the following output:
+Change Dir: C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f Makefile cmTC_f9d01/fast && C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe  -f CMakeFiles\cmTC_f9d01.dir\build.make CMakeFiles/cmTC_f9d01.dir/build
+mingw32-make[1]: Entering directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_f9d01.dir/test_mpi.cpp.obj
+C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE   -fdiagnostics-color=always -o CMakeFiles\cmTC_f9d01.dir\test_mpi.cpp.obj -c C:\Users\jansa\Desktop\traveling_salesperson\openmpi\cmake-build-debug\CMakeFiles\FindMPI\test_mpi.cpp
+[01m[KC:\Users\jansa\Desktop\traveling_salesperson\openmpi\cmake-build-debug\CMakeFiles\FindMPI\test_mpi.cpp:1:10:[m[K [01;31m[Kfatal error: [m[Kmpi.h: No such file or directory
+    1 | #include [01;31m[K<mpi.h>[m[K
+      |          [01;31m[K^~~~~~~[m[K
+compilation terminated.
+mingw32-make[1]: *** [CMakeFiles\cmTC_f9d01.dir\build.make:77: CMakeFiles/cmTC_f9d01.dir/test_mpi.cpp.obj] Error 1
+mingw32-make[1]: Leaving directory 'C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/CMakeTmp'
+mingw32-make: *** [Makefile:126: cmTC_f9d01/fast] Error 2
+
+
+

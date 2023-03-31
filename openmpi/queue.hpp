@@ -9,7 +9,7 @@
 #define _TSP_QUEUE_HPP
 
 #include <vector>
-
+#include <functional>
 // A queue where the elements are stored in an increasing order.
 // This implementation uses a binary heap.
 //

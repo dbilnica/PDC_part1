@@ -1,2 +1,3 @@
-C:/Users/jansa/Desktop/traveling_salesperson/serial/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/jansa/Desktop/traveling_salesperson/serial/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/traveling_salesperson.dir
+C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/jansa/Desktop/traveling_salesperson/openmpi/cmake-build-debug/CMakeFiles/rebuild_cache.dir
